@@ -1,3 +1,13 @@
+-- Set name → color code map
+local SetColors = {
+    ["DPS"] = "|cffffff00",          -- Yellow
+    ["Tank"] = "|cffff0000",         -- Red
+    ["Healer"] = "|cff00ff00",       -- Green
+    ["Boomkin"] = "|cffa335ee",      -- Purple (epic)
+    ["Nature Resist"] = "|cff88ff88",-- Light Green
+    ["Fire Resist"] = "|cffff8800",  -- Orange
+}
+
 -- Extract just the itemID from the colon-delimited string
 local function GetItemIDFromString(inputString)
     return tonumber(string.match(inputString, "^(%d+)"))
@@ -15,6 +25,7 @@ local function GetSets()
 end
 
 -- Search all sets to find which ones include the given itemID
+-- Return the list of set names, each colored appropriately
 local function SearchSets(itemID)
     local foundSets = {}
     if not ItemRackUser or not ItemRackUser.Sets then return foundSets end
@@ -25,7 +36,8 @@ local function SearchSets(itemID)
             for _, itemString in pairs(equipTable) do
                 local id = GetItemIDFromString(itemString)
                 if id == itemID then
-                    table.insert(foundSets, setName)
+                    local color = SetColors[setName] or "|cffffffff" -- fallback to white
+                    table.insert(foundSets, color .. setName .. "|r")
                     break -- avoid duplicates
                 end
             end
