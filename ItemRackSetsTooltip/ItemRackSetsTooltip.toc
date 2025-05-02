@@ -6,4 +6,5 @@
 ## Title: ItemRack Sets Tooltip
 ## Notes: Shows tooltip for ItemRack sets
 ## Version: 0.1
+## RequiredDeps: ItemRack
 ItemWrackSetsTooltip.lua
