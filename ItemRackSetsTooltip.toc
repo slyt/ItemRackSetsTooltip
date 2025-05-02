@@ -1,0 +1,5 @@
+## Interface: 80250
+## Title: ItemRack Sets Tooltip
+## Notes: Shows tooltip for ItemRack sets
+## Version: 0.1
+ItemWrackSetsTooltip.lua
